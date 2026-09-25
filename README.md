@@ -1,5 +1,16 @@
 # Projeto Abastecimento SP — Dashboard Power BI
 
+## Objetivo
+
+Mostrar **tudo o que entra e sai das unidades de saúde de São Paulo**, ou seja, todo o abastecimento distribuído dentro da rede como **receita interna**:
+
+- **Materiais hospitalares**
+- **Medicamentos**
+- **Itens de laboratório**
+- Demais materiais distribuídos às unidades
+
+O painel acompanha o caminho completo desses itens: pedido, programação e **faturamento** das entregas, recebimento de notas, movimentação (entradas, saídas e perdas), estoque por unidade e cobertura em dias. Assim dá para ver onde há falta, excesso ou risco de desabastecimento.
+
 Painel de acompanhamento do abastecimento de itens (SUPRI) nas unidades de saúde: estoque, cobertura em dias, entradas, saídas, perdas, recebimentos e entregas.
 
 O projeto está salvo no formato **Power BI Project (.pbip)**, que guarda o relatório e o modelo como arquivos de texto. Assim o GitHub mostra exatamente o que mudou a cada versão.
