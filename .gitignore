@@ -1,0 +1,6 @@
+# Cache com os dados importados (grande e com dados reais)
+**/.pbi/cache.abf
+# Configurações locais de cada computador
+**/.pbi/localSettings.json
+# Arquivo .pbix antigo (binário, use o .pbip)
+*.pbix
