@@ -6,37 +6,37 @@ O projeto está salvo no formato **Power BI Project (.pbip)**, que guarda o rela
 
 ## Como baixar e abrir
 
-O repositório tem duas pastas:
+O repositório tem duas pastas e uma Release:
 
-| Pasta | Conteúdo | Como baixar |
+| Onde | Conteúdo | Como baixar |
 |---|---|---|
-| [`dashboard/`](dashboard) | O dashboard do Power BI | Abra a pasta, clique em **`PROJETO ABASTECIMENTO SP.zip`** e depois no botão de download (↓) |
-| [`dados/`](dados) | Todos os arquivos que o Power Query lê | Abra cada arquivo e clique em download (↓), ou baixe tudo pelo botão verde **Code → Download ZIP** |
+| [`dashboard/`](dashboard) | `PROJETO ABASTECIMENTO SP.zip`, com o dashboard completo (Power BI Project) | Clique no arquivo e depois no botão de download (↓) |
+| [`dados/`](dados) | Todos os arquivos que o Power Query lê, menos a CONSOLIDADOS BI | Abra cada arquivo e clique em download (↓), ou baixe tudo pelo botão verde **Code → Download ZIP** |
+| [Release **dados-v1**](../../releases) | Os 6 arquivos da **CONSOLIDADOS BI** (2026-01 a 2026-06). Cada um tem mais de 25 MB, acima do limite de envio pelo site | Abra a Release e baixe os arquivos em **Assets** |
 
 Passo a passo:
 
 1. Baixe tudo pelo botão verde **Code → Download ZIP** e extraia no computador.
-2. Dentro de `dados/GSS DO DIA/`, extraia o `GSS DO DIA.zip` ali mesmo e **apague o .zip** (a consulta lê todos os arquivos dessa pasta).
-3. Abra `dashboard/PROJETO ABASTECIMENTO SP.pbip` no Power BI Desktop.
-4. Em **Transformar dados → Gerenciar parâmetros**, troque **`CaminhoBase`** pelo caminho da pasta `dados` extraída. Exemplo: `C:\Users\SeuNome\Downloads\dashboard-main\dados`.
-5. Clique em **Atualizar**.
+2. Baixe os 6 arquivos da Release e coloque-os em `dados/CONSOLIDADOS BI/`. Crie essa pasta.
+3. Em `dados/GSS DO DIA/`, extraia o `GSS DO DIA.zip` ali mesmo e **apague o .zip**, porque a consulta lê todos os arquivos dessa pasta.
+4. Extraia `dashboard/PROJETO ABASTECIMENTO SP.zip` e abra `PROJETO ABASTECIMENTO SP.pbip` no Power BI Desktop.
+5. Em **Transformar dados → Gerenciar parâmetros**, troque **`CaminhoBase`** pelo caminho da pasta `dados`. Exemplo: `C:\Users\SeuNome\Downloads\dashboard-main\dados`.
+6. Clique em **Atualizar**.
 
 ## Pasta `dados/`
 
-Contém todos os arquivos lidos pelo Power Query, na mesma estrutura de pastas que as consultas esperam:
+Contém os arquivos lidos pelo Power Query, na mesma estrutura de pastas que as consultas esperam:
 
 ```
 dados/
 ├── CATEGORIA/CATEGORIA SUPRIS.xlsx
-├── CONSOLIDADOS BI/2026-01.xlsx ... 2026-06.xlsx
+├── CONSOLIDADOS BI/          ← baixar os 6 arquivos da Release dados-v1
 ├── ENTREGAS/20260731101347550.xlsx
 ├── ERROS/ERROS.xlsx
 ├── ESTOQUE POR LOCAL/BASICA/01.xlsx
 ├── ESTOQUE RECEBIMENTO/2020.xlsx ... 2026.xlsx
-└── GSS DO DIA/GSS DO DIA.zip   ← CSV de 114 MB compactado (limite do GitHub é 100 MB)
+└── GSS DO DIA/GSS DO DIA.zip   ← CSV de 114 MB compactado (o limite do GitHub é 100 MB)
 ```
-
-Cada arquivo também pode ser baixado individualmente: abra o arquivo no GitHub e clique no ícone de download (↓).
 
 ---
 
@@ -121,14 +121,14 @@ Planilhas / CSV (OneDrive\Desktop)
 ## Estrutura do repositório
 
 ```
-dados/                                       ← arquivos de origem do Power Query
+dados/                                  ← arquivos de origem do Power Query
 dashboard/
-  ├─ PROJETO ABASTECIMENTO SP.zip            ← dashboard completo para baixar
-  ├─ PROJETO ABASTECIMENTO SP.pbip           ← abra este arquivo
-  ├─ PROJETO ABASTECIMENTO SP.Report/        ← páginas, visuais, imagens e tema
-  └─ PROJETO ABASTECIMENTO SP.SemanticModel/
-       └─ definition/
-            ├─ expressions.tmdl               ← parâmetro CaminhoBase e funções de pasta
-            ├─ relationships.tmdl
-            └─ tables/*.tmdl                  ← uma tabela por arquivo (consultas M + medidas DAX)
+  └─ PROJETO ABASTECIMENTO SP.zip       ← dashboard completo; dentro dele:
+       ├─ PROJETO ABASTECIMENTO SP.pbip           ← abra este arquivo
+       ├─ PROJETO ABASTECIMENTO SP.Report/        ← páginas, visuais, imagens e tema
+       └─ PROJETO ABASTECIMENTO SP.SemanticModel/
+            └─ definition/
+                 ├─ expressions.tmdl               ← parâmetro CaminhoBase
+                 ├─ relationships.tmdl
+                 └─ tables/*.tmdl                  ← consultas M e medidas DAX
 ```
