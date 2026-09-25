@@ -4,14 +4,39 @@ Painel de acompanhamento do abastecimento de itens (SUPRI) nas unidades de saúd
 
 O projeto está salvo no formato **Power BI Project (.pbip)**, que guarda o relatório e o modelo como arquivos de texto. Assim o GitHub mostra exatamente o que mudou a cada versão.
 
-## Como abrir
+## Como baixar e abrir
 
-1. Baixe/clone este repositório.
-2. Abra `PROJETO ABASTECIMENTO SP.pbip` no Power BI Desktop.
-3. Em **Transformar dados → Gerenciar parâmetros**, ajuste o parâmetro **`CaminhoBase`** para a pasta onde estão as planilhas no seu computador.
-4. Clique em **Atualizar**.
+O repositório tem duas pastas:
 
-> Os dados em si **não** ficam no repositório (o `.gitignore` exclui o `cache.abf`). Cada pessoa precisa ter as pastas de dados localmente.
+| Pasta | Conteúdo | Como baixar |
+|---|---|---|
+| [`dashboard/`](dashboard) | O dashboard do Power BI | Abra a pasta, clique em **`PROJETO ABASTECIMENTO SP.zip`** e depois no botão de download (↓) |
+| [`dados/`](dados) | Todos os arquivos que o Power Query lê | Abra cada arquivo e clique em download (↓), ou baixe tudo pelo botão verde **Code → Download ZIP** |
+
+Passo a passo:
+
+1. Baixe tudo pelo botão verde **Code → Download ZIP** e extraia no computador.
+2. Dentro de `dados/GSS DO DIA/`, extraia o `GSS DO DIA.zip` ali mesmo e **apague o .zip** (a consulta lê todos os arquivos dessa pasta).
+3. Abra `dashboard/PROJETO ABASTECIMENTO SP.pbip` no Power BI Desktop.
+4. Em **Transformar dados → Gerenciar parâmetros**, troque **`CaminhoBase`** pelo caminho da pasta `dados` extraída. Exemplo: `C:\Users\SeuNome\Downloads\dashboard-main\dados`.
+5. Clique em **Atualizar**.
+
+## Pasta `dados/`
+
+Contém todos os arquivos lidos pelo Power Query, na mesma estrutura de pastas que as consultas esperam:
+
+```
+dados/
+├── CATEGORIA/CATEGORIA SUPRIS.xlsx
+├── CONSOLIDADOS BI/2026-01.xlsx ... 2026-06.xlsx
+├── ENTREGAS/20260731101347550.xlsx
+├── ERROS/ERROS.xlsx
+├── ESTOQUE POR LOCAL/BASICA/01.xlsx
+├── ESTOQUE RECEBIMENTO/2020.xlsx ... 2026.xlsx
+└── GSS DO DIA/GSS DO DIA.zip   ← CSV de 114 MB compactado (limite do GitHub é 100 MB)
+```
+
+Cada arquivo também pode ser baixado individualmente: abra o arquivo no GitHub e clique no ícone de download (↓).
 
 ---
 
@@ -96,11 +121,14 @@ Planilhas / CSV (OneDrive\Desktop)
 ## Estrutura do repositório
 
 ```
-PROJETO ABASTECIMENTO SP.pbip              ← abra este arquivo
-PROJETO ABASTECIMENTO SP.Report/           ← páginas, visuais, imagens e tema
-PROJETO ABASTECIMENTO SP.SemanticModel/
-  └─ definition/
-       ├─ expressions.tmdl                  ← parâmetro CaminhoBase e funções de pasta
-       ├─ relationships.tmdl
-       └─ tables/*.tmdl                     ← uma tabela por arquivo (consultas M + medidas DAX)
+dados/                                       ← arquivos de origem do Power Query
+dashboard/
+  ├─ PROJETO ABASTECIMENTO SP.zip            ← dashboard completo para baixar
+  ├─ PROJETO ABASTECIMENTO SP.pbip           ← abra este arquivo
+  ├─ PROJETO ABASTECIMENTO SP.Report/        ← páginas, visuais, imagens e tema
+  └─ PROJETO ABASTECIMENTO SP.SemanticModel/
+       └─ definition/
+            ├─ expressions.tmdl               ← parâmetro CaminhoBase e funções de pasta
+            ├─ relationships.tmdl
+            └─ tables/*.tmdl                  ← uma tabela por arquivo (consultas M + medidas DAX)
 ```
